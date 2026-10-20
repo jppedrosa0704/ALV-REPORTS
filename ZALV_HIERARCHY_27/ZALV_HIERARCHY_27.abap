@@ -77,7 +77,7 @@ APPEND ls_fieldcat TO lt_fieldcat.
 CLEAR ls_fieldcat.
 
 ls_fieldcat-col_pos = '3'.
-ls_fieldcat-fieldname  = 'ERZET'.   "Removido espaço no final
+ls_fieldcat-fieldname  = 'ERZET'.   
 ls_fieldcat-tabname = 'LT_VBAK'.
 ls_fieldcat-seltext_l = 'Creation Time'.
 APPEND ls_fieldcat TO lt_fieldcat.
@@ -134,7 +134,7 @@ CALL FUNCTION 'REUSE_ALV_HIERSEQ_LIST_DISPLAY'
   EXPORTING
     IT_FIELDCAT          = lt_fieldcat
     I_TABNAME_HEADER     = 'LT_VBAK'   "Nome da tabela de cabeçalho
-    I_TABNAME_ITEM       = 'LT_VBAP'   "Nome da tabela de itens (corrigido)
+    I_TABNAME_ITEM       = 'LT_VBAP'   "Nome da tabela de itens 
     IS_KEYINFO           = ls_keyinfo
   TABLES
     T_OUTTAB_HEADER      = lt_vbak
