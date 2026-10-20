@@ -3,6 +3,7 @@
 O programa ZPRG3_ALV_27 tem como objetivo listar documentos de vendas (VBAK) e seus itens (VBAP) em um ALV Grid, combinando dados de cabeçalho e itens em uma tabela final estruturada (ZSTR_SALE_27).
 
 Ele permite ao utilizador selecionar um intervalo de pedidos via SELECT-OPTIONS e exibe o resultado em formato ALV com catálogo de campos criado manualmente.
+Além disso, o programa inclui ordenação automática (SORT) dos resultados por data de criação (ERDAT), exibindo os pedidos mais recentes primeiro.
 
 🧩 Componentes Principais
 1. Estruturas Internas
@@ -56,8 +57,6 @@ Resultado: cada linha contém cabeçalho + item.
 🧱 4. Catálogo de Campos (Fieldcatalog)
 Criado manualmente, campo por campo:
 
-Exemplo:
-
 abap
 ls_fieldcat-COL_POS = '1'.
 ls_fieldcat-FIELDNAME = 'VBELN'.
@@ -80,13 +79,27 @@ POSNR — Número do item
 
 MATNR — Código do material
 
-📊 5. Exibição ALV
+🔽 5. Ordenação dos Dados (SORT) — NOVO
+O programa agora inclui ordenação automática dos resultados do ALV.
+
+✔ Ordenação por ERDAT (Data de criação)
+✔ Ordem decrescente (mais recentes primeiro)
+Implementação:
+
+abap
+ls_sort-fieldname = 'ERDAT'.
+ls_sort-down = 'X'.   "Ordenação decrescente
+APPEND ls_sort TO lt_sort.
+Essa funcionalidade melhora a visualização dos dados, permitindo que o utilizador veja primeiro os pedidos mais recentes.
+
+📊 6. Exibição ALV
 O programa usa REUSE_ALV_GRID_DISPLAY para exibir os dados:
 
 abap
 CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
   EXPORTING
     IT_FIELDCAT = LT_FIELDCAT
+    IT_SORT     = lt_sort
   TABLES
     T_OUTTAB    = LT_FINAL.
 O ALV é exibido em formato GRID, permitindo:
@@ -99,7 +112,7 @@ Exportação
 
 Layouts personalizados
 
-🧪 6. Erros e Tratamento
+🧪 7. Erros e Tratamento
 O programa verifica SY-SUBRC após chamadas críticas:
 
 abap
@@ -114,6 +127,7 @@ SELECT VBAP	Buscar itens
 FOR ALL ENTRIES	Evitar SELECT dentro de LOOP
 LOOPs	Montar tabela final
 Fieldcatalog manual	Definir colunas do ALV
+SORT (NOVO)	Ordenar resultados por ERDAT
 REUSE_ALV_GRID_DISPLAY	Exibir ALV GRID
 
 
@@ -132,4 +146,4 @@ Itens
 
 Materiais
 
-Tudo organizado em uma tabela final estruturada e exibido em ALV Grid.
+Tudo organizado em uma tabela final estruturada, ordenada por data, e exibido em ALV Grid.
