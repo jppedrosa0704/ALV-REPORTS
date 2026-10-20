@@ -164,6 +164,16 @@ ls_filter-sign0 = 'E'.              "Include (E = incluir)
 ls_filter-optio = 'EQ'.             "Operador = igual
 ls_filter-valuf_int = 'CURA'.       "Valor do filtro
 APPEND ls_filter TO lt_filter.
+CLEAR ls_filter.
+
+*ls_filter-FIELDNAME = 'VBTYP'.
+*ls_filter-tabname = 'lt_final'.
+*ls_filter-sign0 = 'I'.
+*ls_filter-optio = 'BT'.
+*ls_filter-valuf_int = 'A'.
+*ls_filter-valut_int = 'B'.
+*APPEND ls_filter TO lt_filter.
+*CLEAR ls_filter
 
 "------------------------------------------------------------
 "* Exibição do ALV GRID
