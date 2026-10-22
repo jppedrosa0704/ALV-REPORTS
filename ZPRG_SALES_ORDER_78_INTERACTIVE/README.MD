@@ -124,22 +124,7 @@ Leitura da linha selecionada.
 Consulta dos itens do pedido.
 Construção do Field Catalog dos itens.
 Exibição do segundo ALV.
-✅ Resultado Esperado
-ALV Principal
-Plain Text
-+------------+------------+--------+----------+--------+
-| VBELN | ERDAT | ERZET | ERNAM | VBTYP |
-+------------+------------+--------+----------+--------+
-| 5000000010 | 01.01.2024 | 09:30 | USER01 | C |
-+------------+------------+--------+----------+--------+
-ALV de Itens
-Plain Text
-+------------+--------+------------+
-| VBELN | POSNR | MATNR |
-+------------+--------+------------+
-| 5000000010 | 000010 | MAT-1000 |
-| 5000000010 | 000020 | MAT-2000 |
-+------------+--------+------------+
+
 👨‍💻 Autor
 
 Desenvolvido para estudo e prática de:
